@@ -39,3 +39,23 @@ def set_union(A, B):
     union_set_bit_string = bin(result)[2:].zfill(len(bit_string_a))
 
     return generate_set(union_set_bit_string)
+
+# Método que realiza la intersección entre dos conjuntos dados A y B
+def set_intersection(A, B):
+    bit_string_a = generate_bit_string(A) # Representación como cadena de bits del conjunto A
+    bit_string_b = generate_bit_string(B) # Representación como cadena de bits del conjunto B
+
+    result = int(bit_string_a, 2) & int(bit_string_b, 2)
+    intersection_set_bit_string = bin(result)[2:].zfill(len(bit_string_a))
+
+    return generate_set(intersection_set_bit_string)
+
+# Método que realiza la diferencia entre dos conjuntos dados A y B
+def set_diference(A, B):
+    bit_string_a = generate_bit_string(A) # Representación como cadena de bits del conjunto A
+    bit_string_ab = generate_bit_string(set_intersection(A,B)) # Representación como cadena de bits del conjunto A intersección B
+
+    result = int(bit_string_a,2) - int(bit_string_ab,2)
+    diference_set_bit_string = bin(result)[2:].zfill(len(bit_string_a))
+
+    return generate_set(diference_set_bit_string)
